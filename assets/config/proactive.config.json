@@ -1,0 +1,131 @@
+{
+  "config_version": 1,
+  "stream_id": "default",
+  "timezone": "local",
+  "mode": "shadow",
+  "tick": {
+    "seconds": 60
+  },
+  "window": {
+    "active_start": "09:00",
+    "active_end": "24:00",
+    "quiet_start": "00:00",
+    "quiet_end": "09:00"
+  },
+  "gate": {
+    "score_threshold": 0.5,
+    "min_confidence": 0.55,
+    "max_face_risk": 0.65,
+    "new_topic_user_silence_minutes": 60,
+    "min_interval_minutes": 120,
+    "min_interval_by_kind": {
+      "D8": 60,
+      "D7": 120
+    },
+    "daily_kind_caps": {}
+  },
+  "desires": {
+    "reconnect_after_hours": 3,
+    "idle_share_after_minutes": 60,
+    "follow_up_delay_minutes": 45,
+    "follow_up_max_age_minutes": 360,
+    "owed_reply_infer_minutes": 30,
+    "owed_reply_infer_enabled": true,
+    "relation_infer_enabled": true,
+    "relation_threshold": 2,
+    "d4_daily_cap": 1,
+    "d5_max_follow_ups": 2
+  },
+  "timing": {
+    "provider": "none",
+    "base_url": "",
+    "api_key": "",
+    "model": "",
+    "timeout_s": 20,
+    "daily_budget": 24,
+    "per_kind_budget": 4,
+    "hourly_budget": 2,
+    "cache_minutes": 30,
+    "defer_min_minutes": 5,
+    "defer_max_minutes": 360,
+    "fallback_after_streak": 3,
+    "deadline_send_minutes": 30
+  },
+  "dispatch": {
+    "system_min_gap_seconds": 600,
+    "respect_window_for_system": false,
+    "quotas": {
+      "social": 24,
+      "scheduled": 24,
+      "system": -1
+    },
+    "bubble_quotas": {
+      "social": 60,
+      "scheduled": 60,
+      "system": -1
+    },
+    "per_event_bubbles": 2,
+    "strategies": {
+      "social": "direct",
+      "scheduled": "wait_idle",
+      "system": "direct"
+    }
+  },
+  "open_loop": {
+    "ttl_hours": 48,
+    "max_open": 30,
+    "max_new_per_day": 3,
+    "use_llm_commitment": false
+  },
+  "feedback": {
+    "response_window_minutes": 120,
+    "sentiment_window_minutes": 30,
+    "decay_floor": 0.15,
+    "pace_cap": 3.0,
+    "shadow_after_rejects": 1,
+    "shadow_after_confused": 2,
+    "behavior_weight": 0.7,
+    "fast_reply_minutes": 5,
+    "multi_reply_window_minutes": 5,
+    "timeout_pace_multiplier": 1.5,
+    "shadow_hours": 24,
+    "closed_hours": 12,
+    "reject_decay": 0.5,
+    "respond_decay": 0.3,
+    "reject_quiet_minutes": 120
+  },
+  "content": {
+    "provider": "none",
+    "base_url": "",
+    "api_key": "",
+    "model": "",
+    "timeout_s": 20,
+    "max_chars": 120,
+    "templates_file": "templates/content_templates.json"
+  },
+  "recall": {
+    "mode": "none",
+    "memory_root": "../memory",
+    "folder_id": "default",
+    "top_k": 3,
+    "min_score": 0.3,
+    "fail_open": true,
+    "timeout_s": 8
+  },
+  "audit": {
+    "trace_dir": "traces",
+    "jsonl": true
+  },
+  "storage": {
+    "db_path": "data/proactive.db"
+  },
+  "host": {
+    "adapter": "adapter:create_host"
+  },
+  "daemon": {
+    "pid_file": "data/proactive.pid",
+    "stop_file": "data/STOP",
+    "log_file": "data/daemon.log",
+    "interval_seconds": 60
+  }
+}
